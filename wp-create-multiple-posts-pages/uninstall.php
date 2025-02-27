@@ -3,7 +3,7 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * @since      1.0.0
+ * @since      2.0.0
  * @package    Wp_Create_Multi_Posts_Pages
  */
 

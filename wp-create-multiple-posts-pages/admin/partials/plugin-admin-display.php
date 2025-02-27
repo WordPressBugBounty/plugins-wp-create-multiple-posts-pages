@@ -5,12 +5,11 @@
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
- * @since      1.0.0
+ * @since      2.0.0
  *
  * @package    Wp_Create_Multi_Posts_Pages
  * @subpackage Wp_Create_Multi_Posts_Pages/admin/partials
  */
-
 ?>
 
 <div class="wrap">
@@ -80,7 +79,14 @@
 					<p class="col-form-label insert_note"><?php echo esc_html( __( 'Post Category', 'wp-create-multiple-posts-pages' ) ); ?> <small>(<?php echo esc_html( __( 'Posts Only', 'wp-create-multiple-posts-pages' ) ); ?>)</small></p>
 					<select name="wpcmp_new_post_category[]" id="wpcmp_new_post_category" class="form-control" multiple disabled>
 						<?php
-							foreach ( get_categories() as $category )
+
+							$categories = get_categories( array(
+								'orderby'		=> 'name',
+								'order'   		=> 'ASC',
+								'hide_empty'	=> false,
+							) );
+							
+							foreach ( $categories as $category )
 							{
 							   echo '<option value="'. esc_attr( $category->term_id ) .'">'. esc_html( ucwords( str_replace( "_", " ", $category->cat_name ) ) ) .'</option>';
 							}

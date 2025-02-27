@@ -8,7 +8,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.0
+ * @since      2.0.0
  * @package    Wp_Create_Multi_Posts_Pages
  * @subpackage Wp_Create_Multi_Posts_Pages/includes
  * @author     Sajjad Hossain Sagor <sagorh672@gmail.com>
@@ -19,16 +19,16 @@ class Wp_Create_Multi_Posts_Pages
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   protected
-	 * @var      Plugin_Name_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Wp_Create_Multi_Posts_Pages_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
@@ -37,7 +37,7 @@ class Wp_Create_Multi_Posts_Pages
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -50,17 +50,17 @@ class Wp_Create_Multi_Posts_Pages
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function __construct()
 	{
-		if ( defined( 'WPCMP_VERSION' ) )
+		if ( defined( 'WP_CREATE_MULTI_POSTS_PAGES_VERSION' ) )
 		{
-			$this->version = WPCMP_VERSION;
+			$this->version = WP_CREATE_MULTI_POSTS_PAGES_VERSION;
 		}
 		else
 		{
-			$this->version = '2.0.0';
+			$this->version = '1.0.0';
 		}
 		
 		$this->plugin_name = 'wp-create-multiple-posts-pages';
@@ -75,14 +75,14 @@ class Wp_Create_Multi_Posts_Pages
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Plugin_Name_Loader. Orchestrates the hooks of the plugin.
-	 * - Plugin_Name_i18n. Defines internationalization functionality.
-	 * - Plugin_Name_Admin. Defines all hooks for the admin area.
+	 * - Wp_Create_Multi_Posts_Pages_Loader. Orchestrates the hooks of the plugin.
+	 * - Wp_Create_Multi_Posts_Pages_i18n. Defines internationalization functionality.
+	 * - Wp_Create_Multi_Posts_Pages_Admin. Defines all hooks for the admin area.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 */
 	private function load_dependencies()
@@ -110,10 +110,10 @@ class Wp_Create_Multi_Posts_Pages
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Plugin_Name_i18n class in order to set the domain and to register the hook
+	 * Uses the Wp_Create_Multi_Posts_Pages_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 */
 	private function set_locale()
@@ -127,7 +127,7 @@ class Wp_Create_Multi_Posts_Pages
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 */
 	private function define_admin_hooks()
@@ -137,7 +137,7 @@ class Wp_Create_Multi_Posts_Pages
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-		$this->loader->add_action( 'plugin_action_links_' . WPCMP_PLUGIN_BASENAME, $plugin_admin, 'add_plugin_action_links' );
+		$this->loader->add_action( 'plugin_action_links_' . WP_CREATE_MULTI_POSTS_PAGES_PLUGIN_BASENAME, $plugin_admin, 'add_plugin_action_links' );
 
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
 	}
@@ -145,7 +145,7 @@ class Wp_Create_Multi_Posts_Pages
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function run()
 	{
@@ -156,7 +156,7 @@ class Wp_Create_Multi_Posts_Pages
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
+	 * @since     2.0.0
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name()
@@ -167,8 +167,8 @@ class Wp_Create_Multi_Posts_Pages
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
-	 * @return    Plugin_Name_Loader    Orchestrates the hooks of the plugin.
+	 * @since     2.0.0
+	 * @return    Wp_Create_Multi_Posts_Pages_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader()
 	{
@@ -178,7 +178,7 @@ class Wp_Create_Multi_Posts_Pages
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     2.0.0
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version()

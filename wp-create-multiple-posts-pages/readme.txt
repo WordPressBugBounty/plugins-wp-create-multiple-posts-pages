@@ -3,7 +3,7 @@ Contributors: sajjad67
 Tags: create-post,edit-post,multiple-post,multiple-page,create-page
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,8 @@ Insert you posts / pages title in each line and set type - status - category and
 1. Posts Creation Panel.
 2. After Posts Created Screen.
 == Changelog ==
+= 2.0.1 =
+- Minor changes in codebase only.
 = 2.0.0 =
 - Updated code for latest version wp support. Added translation support for all text.
 = 1.0.7 =

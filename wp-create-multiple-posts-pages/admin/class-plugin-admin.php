@@ -15,7 +15,7 @@ class Wp_Create_Multi_Posts_Pages_Admin
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -24,7 +24,7 @@ class Wp_Create_Multi_Posts_Pages_Admin
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -33,7 +33,7 @@ class Wp_Create_Multi_Posts_Pages_Admin
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -47,7 +47,7 @@ class Wp_Create_Multi_Posts_Pages_Admin
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function enqueue_styles()
 	{
@@ -56,14 +56,14 @@ class Wp_Create_Multi_Posts_Pages_Admin
 		// check if current page is plugin settings page and current user an admin
 		if( $current_screen->id == 'toplevel_page_wp-create-multiple-posts-pages' && current_user_can( 'manage_options' ) )
 		{
-			wp_enqueue_style( $this->plugin_name, WPCMP_PLUGIN_URL . 'admin/css/admin.css', [], $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name, WP_CREATE_MULTI_POSTS_PAGES_PLUGIN_URL . 'admin/css/admin.css', [], $this->version, 'all' );
 		}
 	}
 
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function enqueue_scripts()
 	{
@@ -72,14 +72,14 @@ class Wp_Create_Multi_Posts_Pages_Admin
 		// check if current page is plugin settings page and current user an admin
 		if( $current_screen->id == 'toplevel_page_wp-create-multiple-posts-pages' && current_user_can( 'manage_options' ) )
 		{
-			wp_enqueue_script( $this->plugin_name, WPCMP_PLUGIN_URL . 'admin/js/admin.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name, WP_CREATE_MULTI_POSTS_PAGES_PLUGIN_URL . 'admin/js/admin.js', array( 'jquery' ), $this->version, false );
 		}
 	}
 
 	/**
 	 * Adds a settings link to the plugin's action links on the plugin list table.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 *
 	 * @param    array $links The existing array of plugin action links.
 	 * @return   array The updated array of plugin action links, including the settings link.
@@ -94,7 +94,7 @@ class Wp_Create_Multi_Posts_Pages_Admin
 	/**
 	 * Adds the plugin settings page to the WordPress dashboard menu.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function admin_menu()
 	{
@@ -111,7 +111,7 @@ class Wp_Create_Multi_Posts_Pages_Admin
 	/**
 	 * Renders the plugin settings page form.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function menu_page()
 	{
@@ -143,10 +143,7 @@ class Wp_Create_Multi_Posts_Pages_Admin
 					{	
 						foreach ( $wpcmp_new_post_category as $id )
 						{	
-							if ( ! in_array( $id, $category_id ) )
-							{	
-								$category_ids[] = intval( $id );
-							}
+							$category_ids[] 	= intval( $id );
 						}
 					}
 
@@ -160,7 +157,7 @@ class Wp_Create_Multi_Posts_Pages_Admin
 						  'post_type' 	  => sanitize_text_field( $wpcmp_new_post_type ),
 						  'post_status'   => sanitize_text_field( $wpcmp_new_post_status ),
 						  'post_author'   => sanitize_text_field( $wpcmp_new_post_author ),
-						  'post_category' => array_map( 'intval', $category_ids ),
+						  'post_category' => array_unique( $category_ids ),
 						);
 
 						// Insert the post into the database
@@ -189,13 +186,13 @@ class Wp_Create_Multi_Posts_Pages_Admin
 
 		$i 										= 0;
 
-		require_once WPCMP_PLUGIN_PATH . 'admin/partials/plugin-admin-display.php';
+		require_once WP_CREATE_MULTI_POSTS_PAGES_PLUGIN_PATH . 'admin/partials/plugin-admin-display.php';
 	}
 
 	/**
 	* Get all custom registered post types
 	* 
-	* @since    1.0.0
+	* @since    2.0.0
 	*/
 	public function get_custom_post_types()
 	{
