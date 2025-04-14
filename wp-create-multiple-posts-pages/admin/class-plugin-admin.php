@@ -3,8 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * Defines the plugin name, version, and hooks for
- * enqueueing the admin-specific stylesheet and JavaScript.
+ * Defines the plugin name, version and other methods.
  *
  * @package    Wp_Create_Multi_Posts_Pages
  * @subpackage Wp_Create_Multi_Posts_Pages/includes

@@ -68,6 +68,7 @@ class Wp_Create_Multi_Posts_Pages
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
+		$this->define_public_hooks();
 	}
 
 	/**
@@ -78,6 +79,7 @@ class Wp_Create_Multi_Posts_Pages
 	 * - Wp_Create_Multi_Posts_Pages_Loader. Orchestrates the hooks of the plugin.
 	 * - Wp_Create_Multi_Posts_Pages_i18n. Defines internationalization functionality.
 	 * - Wp_Create_Multi_Posts_Pages_Admin. Defines all hooks for the admin area.
+	 * - Wp_Create_Multi_Posts_Pages_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -91,18 +93,24 @@ class Wp_Create_Multi_Posts_Pages
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-plugin-loader.php';
+		require_once WP_CREATE_MULTI_POSTS_PAGES_PLUGIN_PATH . 'includes/class-plugin-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-plugin-i18n.php';
+		require_once WP_CREATE_MULTI_POSTS_PAGES_PLUGIN_PATH . 'includes/class-plugin-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-plugin-admin.php';
+		require_once WP_CREATE_MULTI_POSTS_PAGES_PLUGIN_PATH . 'admin/class-plugin-admin.php';
+
+		/**
+		 * The class responsible for defining all actions that occur in the public-facing
+		 * side of the site.
+		 */
+		require_once WP_CREATE_MULTI_POSTS_PAGES_PLUGIN_PATH . 'public/class-plugin-public.php';
 
 		$this->loader = new Wp_Create_Multi_Posts_Pages_Loader();
 	}
@@ -140,6 +148,18 @@ class Wp_Create_Multi_Posts_Pages
 		$this->loader->add_action( 'plugin_action_links_' . WP_CREATE_MULTI_POSTS_PAGES_PLUGIN_BASENAME, $plugin_admin, 'add_plugin_action_links' );
 
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
+	}
+
+	/**
+	 * Register all of the hooks related to the public-facing functionality
+	 * of the plugin.
+	 *
+	 * @since    2.0.0
+	 * @access   private
+	 */
+	private function define_public_hooks()
+	{
+		$plugin_public = new Wp_Create_Multi_Posts_Pages_Public( $this->get_plugin_name(), $this->get_version() );
 	}
 
 	/**
