@@ -2,9 +2,9 @@
 Tags: create-post, edit-post, multiple-post, multiple-page, create-page
 Contributors: sajjad67
 Author: Sajjad Hossain Sagor
-Tested up to: 6.7
+Tested up to: 6.8
 Requires at least: 5.6
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 Requires PHP: 8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,9 +21,6 @@ This plugin adds feature to create multiple posts / pages at once with empty con
 - Assign Post Author: Select the author for the new content.
 - Assign Categories: Apply categories to posts effortlessly.
 - Custom Post Types (CPT) Support: Compatible with custom post types.
-
-**Interested in contributing to WP Create Multiple Posts & Pages?**
-Contact me sagorh672(at)gmail.com
 
 == Installation ==
 To add a WordPress Plugin using the built-in plugin installer:

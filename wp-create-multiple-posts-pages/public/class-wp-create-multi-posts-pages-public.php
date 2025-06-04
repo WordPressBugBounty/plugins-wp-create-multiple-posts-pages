@@ -4,7 +4,7 @@
  * is used to load the plugin's public-facing functionality.
  *
  * @package       Wp_Create_Multi_Posts_Pages
- * @subpackage    Wp_Create_Multi_Posts_Pages/includes
+ * @subpackage    Wp_Create_Multi_Posts_Pages/public
  * @author        Sajjad Hossain Sagor <sagorh672@gmail.com>
  */
 
@@ -40,7 +40,7 @@ class Wp_Create_Multi_Posts_Pages_Public {
 	 * @since     2.0.0
 	 * @access    public
 	 * @param     string $plugin_name The name of the plugin.
-	 * @param     string $version The version of this plugin.
+	 * @param     string $version     The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 		$this->plugin_name = $plugin_name;

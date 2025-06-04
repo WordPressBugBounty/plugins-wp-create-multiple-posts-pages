@@ -59,12 +59,7 @@ class Wp_Create_Multi_Posts_Pages {
 	 * @access    public
 	 */
 	public function __construct() {
-		if ( defined( 'WP_CREATE_MULTI_POSTS_PAGES_VERSION' ) ) {
-			$this->version = WP_CREATE_MULTI_POSTS_PAGES_VERSION;
-		} else {
-			$this->version = '1.0.0';
-		}
-
+		$this->version     = defined( 'WP_CREATE_MULTI_POSTS_PAGES_PLUGIN_VERSION' ) ? WP_CREATE_MULTI_POSTS_PAGES_PLUGIN_VERSION : '1.0.0';
 		$this->plugin_name = 'wp-create-multiple-posts-pages';
 
 		$this->load_dependencies();
@@ -79,8 +74,8 @@ class Wp_Create_Multi_Posts_Pages {
 	 * Include the following files that make up the plugin:
 	 *
 	 * - Wp_Create_Multi_Posts_Pages_Loader. Orchestrates the hooks of the plugin.
-	 * - Wp_Create_Multi_Posts_Pages_i18n. Defines internationalization functionality.
-	 * - Wp_Create_Multi_Posts_Pages_Admin. Defines all hooks for the admin area.
+	 * - Wp_Create_Multi_Posts_Pages_i18n.   Defines internationalization functionality.
+	 * - Wp_Create_Multi_Posts_Pages_Admin.  Defines all hooks for the admin area.
 	 * - Wp_Create_Multi_Posts_Pages_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
